@@ -299,7 +299,7 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;from_account&quot;:&quot;SYSTEM&quot;,&#xd;
     &quot;to_account&quot;:&quot;01810926380&quot;,&#xd;
-    &quot;amount&quot;:1000&#xd;
+    &quot;amount&quot;:2000&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -408,7 +408,7 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;from_account&quot;:&quot;01811363778&quot;,&#xd;
     &quot;to_account&quot;:&quot;01810926380&quot;,&#xd;
-    &quot;amount&quot;:50&#xd;
+    &quot;amount&quot;:500&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -448,7 +448,7 @@
                 <stringProp name="Argument.value">{&#xd;
     &quot;from_account&quot;:&quot;01811363778&quot;,&#xd;
     &quot;to_account&quot;:&quot;01686606905&quot;,&#xd;
-    &quot;amount&quot;:20&#xd;
+    &quot;amount&quot;:200&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
