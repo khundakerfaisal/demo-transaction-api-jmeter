@@ -50,6 +50,14 @@
               <stringProp name="Header.name">X-AUTH-SECRET-KEY</stringProp>
               <stringProp name="Header.value">ROADTOSDET</stringProp>
             </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">AgentPhoneNumber</stringProp>
+              <stringProp name="Header.value">${agentphonenumber}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">customerPhoneNumber</stringProp>
+              <stringProp name="Header.value">${customerPhoneNumber}</stringProp>
+            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -152,6 +160,12 @@
           <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extractor Id" enabled="true">
             <stringProp name="JSONPostProcessor.referenceNames">userId</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">$.user.id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Agent Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">agentphonenumber</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.user.phone_number</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
           </JSONPostProcessor>
           <hashTree/>
@@ -260,6 +274,12 @@
             <boolProp name="ISREGEX">true</boolProp>
           </JSONPathAssertion>
           <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Customer Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">customerPhoneNumber</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.user.phone_number</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Customer" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -298,9 +318,10 @@
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
     &quot;from_account&quot;:&quot;SYSTEM&quot;,&#xd;
-    &quot;to_account&quot;:&quot;01810926380&quot;,&#xd;
+    &quot;to_account&quot;:&quot;${agentphonenumber}&quot;,&#xd;
     &quot;amount&quot;:2000&#xd;
-}</stringProp>
+}&#xd;
+</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -337,8 +358,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;from_account&quot;:&quot;01810926380&quot;,&#xd;
-    &quot;to_account&quot;:&quot;01811363778&quot;,&#xd;
+    &quot;from_account&quot;:&quot;${agentphonenumber}&quot;,&#xd;
+    &quot;to_account&quot;:&quot;${customerPhoneNumber}&quot;,&#xd;
     &quot;amount&quot;:1000&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -378,7 +399,7 @@
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">http</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/transaction/balance/01811363778</stringProp>
+          <stringProp name="HTTPSampler.path">/transaction/balance/${customerPhoneNumber}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -406,8 +427,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;from_account&quot;:&quot;01811363778&quot;,&#xd;
-    &quot;to_account&quot;:&quot;01810926380&quot;,&#xd;
+    &quot;from_account&quot;:&quot;${customerPhoneNumber}&quot;,&#xd;
+    &quot;to_account&quot;:&quot;${agentphonenumber}&quot;,&#xd;
     &quot;amount&quot;:500&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -446,7 +467,7 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-    &quot;from_account&quot;:&quot;01811363778&quot;,&#xd;
+    &quot;from_account&quot;:&quot;${customerPhoneNumber}&quot;,&#xd;
     &quot;to_account&quot;:&quot;01686606905&quot;,&#xd;
     &quot;amount&quot;:200&#xd;
 }</stringProp>
