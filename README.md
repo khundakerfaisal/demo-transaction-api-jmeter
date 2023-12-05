@@ -2,6 +2,7 @@
 
 ## Prerequisite
 - Install jmeter
+- Install jdk-11.0.16.1
 ## About this project
   This is the dmoney-transaction-api-jmeter with includes HTML report.Which has facilate to create customer and agent,
   Deposit to agent number,deposit to customer number, money withdraw from the agent account, Marchant payment,
